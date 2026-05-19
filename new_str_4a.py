@@ -8,6 +8,50 @@ import gdown
 from dotenv import load_dotenv
 load_dotenv()
 
+# -----------------------------
+# Authentication
+# -----------------------------
+
+def check_login():
+
+    if "authenticated" not in st.session_state:
+        st.session_state.authenticated = False
+
+    if "login_error" not in st.session_state:
+        st.session_state.login_error = False
+
+    if st.session_state.authenticated:
+        return True
+
+
+    st.title("🔐 DemandSense Login")
+
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+
+    if st.session_state.login_error:
+        st.error("❌ Invalid username or password")
+
+    if st.button("Login"):
+
+        valid_username = st.secrets["APP_USERNAME"]
+        valid_password = st.secrets["APP_PASSWORD"]
+
+        if username == valid_username and password == valid_password:
+            st.session_state.authenticated = True
+            st.session_state.login_error = False
+            st.rerun()
+        else:
+            st.session_state.login_error = True
+            st.rerun()
+
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    return False
+
+
+if not check_login():
+    st.stop()
 
 # === Styling ===
 primary_color = "#2596be"
