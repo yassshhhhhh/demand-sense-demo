@@ -4,3 +4,4 @@ numpy
 pyarrow
 watchdog
 gdown
+python-dotenv
