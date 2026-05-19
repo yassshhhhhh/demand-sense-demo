@@ -4,6 +4,10 @@ import os
 import streamlit.components.v1 as components
 from datetime import datetime
 from pathlib import Path
+import gdown
+from dotenv import load_dotenv
+load_dotenv()
+
 
 # === Styling ===
 primary_color = "#2596be"
@@ -46,9 +50,25 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # === Load Data ===
-BASE_DIR = Path(__file__).parent
-data_path = BASE_DIR / "Data" / "seasonality_prediction.csv"
-df = pd.read_csv(data_path)
+# file_id = os.getenv("DRIVE_FILE_ID")
+
+url = os.getenv("DATA_PATH")
+
+# Create Data directory
+DATA_DIR = Path("Data")
+DATA_DIR.mkdir(exist_ok=True)
+
+output = DATA_DIR / "seasonality_prediction.csv"
+
+# Download only once
+if not output.exists():
+    gdown.download(url, str(output), quiet=False)
+
+@st.cache_data
+def load_data():
+    return pd.read_csv(output)
+
+df = load_data()
 
 # === Sidebar Filters ===
 st.sidebar.title("Selection Panel")

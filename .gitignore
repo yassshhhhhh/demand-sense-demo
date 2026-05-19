@@ -65,6 +65,7 @@ tmp/
 # =========================
 # Large Data Files (Optional)
 # =========================
+Data/
 Data/*.xlsx
 Data/*.parquet
 
