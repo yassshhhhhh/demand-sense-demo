@@ -3,6 +3,7 @@ import pandas as pd
 import os
 import streamlit.components.v1 as components
 from datetime import datetime
+from pathlib import Path
 
 # === Styling ===
 primary_color = "#2596be"
@@ -45,9 +46,8 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # === Load Data ===
-# data_path = os.path.join(os.getcwd(), "..", 'Data', 'final_predictions.csv')
-data_path = os.path.join(os.getcwd(), 'Data', 'seasonality_prediction.csv')
-# data_path = os.path.join(os.getcwd(), "..", 'Notebook', 'final_xgboost_with_lag_festival.csv')
+BASE_DIR = Path(__file__).parent
+data_path = BASE_DIR / "Data" / "seasonality_prediction.csv"
 df = pd.read_csv(data_path)
 
 # === Sidebar Filters ===
