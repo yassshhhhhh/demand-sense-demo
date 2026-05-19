@@ -1,0 +1,84 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# =========================
+# Virtual Environment
+# =========================
+env/
+venv/
+ENV/
+.venv/
+
+# =========================
+# Streamlit
+# =========================
+.streamlit/secrets.toml
+
+# =========================
+# Environment Variables
+# =========================
+.env
+
+# =========================
+# Jupyter Notebook
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+
+# =========================
+# PyCharm
+# =========================
+.idea/
+
+# =========================
+# Mac / Windows
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Cache Files
+# =========================
+.cache/
+.pytest_cache/
+.mypy_cache/
+
+# =========================
+# Temporary Files
+# =========================
+temp/
+tmp/
+
+# =========================
+# Large Data Files (Optional)
+# =========================
+Data/*.xlsx
+Data/*.parquet
+
+# Keep sample files if needed
+!Data/sample.csv
+
+# =========================
+# Model Files (Optional)
+# =========================
+*.pkl
+*.joblib
+*.h5
+
+# =========================
+# Streamlit Cloud
+# =========================
+.streamlit/secrets.toml
